@@ -15,7 +15,7 @@ var Prototype = /** @class */ (function () {
 var prototype = new Prototype('iPhone 13', 'black', "1000 usd");
 console.log('Original:');
 console.log(prototype);
-console.log('Clone ones:');
+console.log('Copyed ones:');
 var prototypeOne = prototype.Copy();
 prototypeOne.model = 'iPhone 12';
 prototypeOne.price = 700 + ' usd';
