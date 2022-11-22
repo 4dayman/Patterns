@@ -4,7 +4,7 @@ class Prototype {
         this.color = color;
         this.price = price;
     }
-    Copy() {
+    copy() {
         return new Prototype(this.model, this.color, this.price);
     }
 }
@@ -13,11 +13,11 @@ console.log('Original:')
 console.log(prototype); 
 
 console.log('Copyed ones:')
-const prototypeOne = prototype.Copy();
+const prototypeOne = prototype.copy();
 prototypeOne.model = 'iPhone 12'
 prototypeOne.price = 700 + ' usd';
 console.log(prototypeOne); 
 
-const prototypeTwo = prototype.Copy();
+const prototypeTwo = prototype.copy();
 prototypeTwo.color = 'white';
 console.log(prototypeTwo); 
