@@ -53,13 +53,10 @@ var FordCoupe = /** @class */ (function () {
     return FordCoupe;
 }());
 function factoryOfFactorys(factory) {
-    var toyota1 = factory.createSedan();
-    var toyota2 = factory.createCoupe();
-    console.log(toyota1.sedan());
-    console.log(toyota2.coupe());
-    var ford1 = factory.createSedan();
-    var ford2 = factory.createCoupe();
-    console.log(ford1.sedan());
-    console.log(ford2.coupe());
+    var newSedan = factory.createSedan();
+    var newCoupe = factory.createCoupe();
+    console.log(newSedan.sedan());
+    console.log(newCoupe.coupe());
 }
-factoryOfFactorys(new ToyotaFactory() && new FordFactory());
+factoryOfFactorys(new ToyotaFactory());
+factoryOfFactorys(new FordFactory());

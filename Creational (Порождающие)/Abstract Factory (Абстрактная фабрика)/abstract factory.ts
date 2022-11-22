@@ -47,13 +47,10 @@ class FordCoupe implements Coupe {
     }
 }
 function factoryOfFactorys(factory: CarsFactory){
-    const toyota1 = factory.createSedan();
-    const toyota2 = factory.createCoupe();
-    console.log(toyota1.sedan())
-    console.log(toyota2.coupe())
-    const ford1 = factory.createSedan();
-    const ford2 = factory.createCoupe();
-    console.log(ford1.sedan())
-    console.log(ford2.coupe())
+    const newSedan = factory.createSedan();
+    const newCoupe = factory.createCoupe();
+    console.log(newSedan.sedan())
+    console.log(newCoupe.coupe())
 }
-factoryOfFactorys(new ToyotaFactory() && new FordFactory());
+factoryOfFactorys(new ToyotaFactory());
+factoryOfFactorys(new FordFactory());
