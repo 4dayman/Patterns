@@ -32,7 +32,7 @@ var ToyotaCoupe = /** @class */ (function () {
     function ToyotaCoupe() {
     }
     ToyotaCoupe.prototype.coupe = function () {
-        return 'Order: Toyota Sedan. \nDelivery in progres!' + '\n';
+        return 'Order: Toyota Coupe. \nDelivery in progres!' + '\n';
     };
     return ToyotaCoupe;
 }());
@@ -48,7 +48,7 @@ var FordCoupe = /** @class */ (function () {
     function FordCoupe() {
     }
     FordCoupe.prototype.coupe = function () {
-        return 'Order: Ford Sedan. \nDelivery in progres!' + '\n';
+        return 'Order: Ford Coupe. \nDelivery in progres!' + '\n';
     };
     return FordCoupe;
 }());

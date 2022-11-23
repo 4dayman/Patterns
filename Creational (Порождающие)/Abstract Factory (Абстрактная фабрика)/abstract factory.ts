@@ -33,7 +33,7 @@ class ToyotaSedan implements Sedan {
 }
 class ToyotaCoupe implements Coupe {
     public coupe(): string {
-        return  'Order: Toyota Sedan. \nDelivery in progres!' + '\n'
+        return  'Order: Toyota Coupe. \nDelivery in progres!' + '\n'
     }
 }
 class FordSedan implements Sedan {
@@ -43,7 +43,7 @@ class FordSedan implements Sedan {
 }
 class FordCoupe implements Coupe {
     public coupe(): string {
-        return  'Order: Ford Sedan. \nDelivery in progres!' + '\n'
+        return  'Order: Ford Coupe. \nDelivery in progres!' + '\n'
     }
 }
 function factoryOfFactorys(factory: CarsFactory){
