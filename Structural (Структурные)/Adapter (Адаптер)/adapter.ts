@@ -10,11 +10,16 @@ class VGA implements Analog{
     }
 }
 class HDMI implements Digital{
+    handleDigital(): string {
+        return 'Interface: HDMI; \nSignal: Digital;';
+    }
+}
+class HDMIToVGA  implements Digital{
     private vga: VGA = new VGA();
     handleDigital(): string {
         return this.vga.handleAnalog();
     }
 }
-const adapter: HDMI = new HDMI();
+const adapter: HDMIToVGA = new HDMIToVGA();
 this.adapterResult = adapter.handleDigital();
 console.log(this.adapterResult);
