@@ -40,7 +40,6 @@ var DarkTheme = /** @class */ (function () {
 }());
 var Main = /** @class */ (function (_super) {
     __extends(Main, _super);
-    // theme: Theme;
     function Main(theme) {
         return _super.call(this, theme) || this;
     }
@@ -51,7 +50,6 @@ var Main = /** @class */ (function (_super) {
 }(WebPage));
 var About = /** @class */ (function (_super) {
     __extends(About, _super);
-    // theme: Theme;
     function About(theme) {
         return _super.call(this, theme) || this;
     }
@@ -62,7 +60,6 @@ var About = /** @class */ (function (_super) {
 }(WebPage));
 var Contacts = /** @class */ (function (_super) {
     __extends(Contacts, _super);
-    // theme: Theme;
     function Contacts(theme) {
         return _super.call(this, theme) || this;
     }
