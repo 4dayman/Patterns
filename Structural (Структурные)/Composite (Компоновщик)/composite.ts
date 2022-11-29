@@ -12,6 +12,9 @@ abstract class Company implements CompanyInterface{
     }
     add(company: Company): void {}
     remove(company: Company): void {}
+    isComposite(): boolean {
+        return true;
+    }
     abstract stuff(): string;
 }
 
@@ -50,6 +53,9 @@ class Department extends Company {
 function companyEmployees(company: Company) {
     console.log(`Company Employees: ${company.stuff()}`);
 }
+const developer = new Developer();
+companyEmployees(developer);
+console.log(' ');
 
 const company = new Department();
 const department = new Department();
@@ -65,3 +71,12 @@ anotherDepartment.add(new Developer());
 anotherDepartment.add(new Designer());
 company.add(anotherDepartment);
 companyEmployees(company);
+console.log(' ');
+
+function companyEmployees2(company1: Company, company2: Company) {
+    if (company1.isComposite()) {
+        company1.add(company2)
+    }
+    console.log(`Company Employees: ${company1.stuff()}`);
+}
+companyEmployees2(company, developer);

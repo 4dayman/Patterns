@@ -24,6 +24,9 @@ var Company = /** @class */ (function () {
     };
     Company.prototype.add = function (company) { };
     Company.prototype.remove = function (company) { };
+    Company.prototype.isComposite = function () {
+        return true;
+    };
     return Company;
 }());
 var Designer = /** @class */ (function (_super) {
@@ -75,6 +78,9 @@ var Department = /** @class */ (function (_super) {
 function companyEmployees(company) {
     console.log("Company Employees: ".concat(company.stuff()));
 }
+var developer = new Developer();
+companyEmployees(developer);
+console.log(' ');
 var company = new Department();
 var department = new Department();
 department.add(new Designer());
@@ -89,3 +95,11 @@ anotherDepartment.add(new Developer());
 anotherDepartment.add(new Designer());
 company.add(anotherDepartment);
 companyEmployees(company);
+console.log(' ');
+function companyEmployees2(company1, company2) {
+    if (company1.isComposite()) {
+        company1.add(company2);
+    }
+    console.log("Company Employees: ".concat(company1.stuff()));
+}
+companyEmployees2(company, developer);
