@@ -3,11 +3,11 @@ interface CompanyInterface {
 }
 
 abstract class Company implements CompanyInterface{
-    parent: Company | null;
-    setParent(parent: Company | null) {
+    parent: Company;
+    setParent(parent: Company) {
         this.parent = parent;
     }
-    getParent(): Company | null {
+    getParent(): Company {
         return this.parent;
     }
     add(company: Company): void {}
