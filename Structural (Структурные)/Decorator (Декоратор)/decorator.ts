@@ -10,23 +10,27 @@ class SimpleService implements IService {
         return "Simple service.";
     }
 }
-class Manikure implements IService {
+class Decorator implements IService{
     service: IService;
     constructor(service: IService) {
         this.service = service;
     }
     getCost(): number {
-        return this.service.getCost() + 150;
+        return this.service.getCost();
     }
     getDescription(): string {
-        return "Manikure.: ";
+        return this.service.getDescription();
     }
 }
-class HairCut implements IService {
-    service: IService;
-    constructor(service: IService) {
-        this.service = service;
+class HairColoring extends Decorator {
+    getCost(): number {
+        return this.service.getCost() + 450;
     }
+    getDescription(): string {
+        return "Hair coloring.: ";
+    }
+}
+class HairCut extends Decorator {
     getCost(): number {
         return this.service.getCost() + 250;
     }
@@ -35,11 +39,11 @@ class HairCut implements IService {
     }
 }
 
-const simpleService = new SimpleService();
-const manikure = new Manikure(simpleService);
+let simpleService = new SimpleService();
+const hairColoring = new HairColoring(simpleService);
 const haircut = new HairCut(simpleService);
-const total = (manikure.getCost() + haircut.getCost()).toString();
+const total = (hairColoring.getCost() + haircut.getCost()).toString();
 console.log(' ');
-console.log(manikure.getDescription() + manikure.getCost());
+console.log(hairColoring.getDescription() + hairColoring.getCost());
 console.log(haircut.getDescription() + haircut.getCost());
 console.log('Total cost: ' + total);
