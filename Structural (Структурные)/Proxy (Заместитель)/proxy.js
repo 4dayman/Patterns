@@ -15,7 +15,8 @@ var Security = /** @class */ (function () {
     }
     Security.prototype.open = function (password) {
         if (this.autorize(password)) {
-            this.lock.open();
+            console.log('Password correct!');
+            this.lock.open(password);
         }
         else {
             console.log('Password incorrect!');
@@ -32,3 +33,4 @@ var Security = /** @class */ (function () {
 var door = new Security(new OfficeLock());
 door.open('word');
 door.open('password');
+door.close();

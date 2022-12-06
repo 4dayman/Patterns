@@ -1,5 +1,5 @@
 interface DoorLock {
-    open();
+    open(password: string);
     close();
 }
 class OfficeLock implements DoorLock {
@@ -10,14 +10,15 @@ class OfficeLock implements DoorLock {
         console.log('Locked');
     }
 }
-class Security {
+class Security implements DoorLock{
     lock: DoorLock;
     constructor(lock: DoorLock) {
         this.lock = lock;
     }
     open(password: string) {
         if (this.autorize(password)) {
-            this.lock.open();
+            console.log('Password correct!')
+            this.lock.open(password);
         } else {
             console.log('Password incorrect!')
         }
@@ -34,3 +35,4 @@ const door = new Security(new OfficeLock());
 
 door.open('word');
 door.open('password');
+door.close();
