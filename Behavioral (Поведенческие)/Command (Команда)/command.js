@@ -15,8 +15,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var TEXT = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, inventore?';
 var Edit = /** @class */ (function () {
-    function Edit(edit) {
-        this.text = edit;
+    function Edit(str) {
+        this.text = str;
     }
     return Edit;
 }());
@@ -61,7 +61,6 @@ var Editor = /** @class */ (function () {
     };
     return Editor;
 }());
-// const main = () => {
 var editor = new Editor(TEXT);
 var insertButton = function (sourseWord, pos) {
     editor.insertCommand.execute(sourseWord, pos);
@@ -76,4 +75,3 @@ console.log('');
 console.log('Before delete:\n', editor.getText());
 deleteButton('Lorem ');
 console.log('After delete:\n', editor.getText());
-// }

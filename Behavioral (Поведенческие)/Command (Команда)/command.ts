@@ -9,7 +9,7 @@ class Edit {
 abstract class Command {
     edit: Edit;
     constructor(edit: Edit) {
-        this.edit = edit 
+        this.edit = edit;
     }
     abstract execute(...args: any[]): void;
 }
@@ -21,7 +21,7 @@ class InsertCommand extends Command {
         const text = this.edit.text;
         const partBefore = text.substring(0, position);
         const partAfter = text.substring(position);
-        this.edit.text = `${partBefore}${word}${partAfter}`
+        this.edit.text = `${partBefore}${word}${partAfter}`;
     }
 }
 class DeleteCommand extends Command {
@@ -30,7 +30,7 @@ class DeleteCommand extends Command {
     }
     execute(word: string) {
         const text = this.edit.text;
-        this.edit.text = text.replace(word, '')
+        this.edit.text = text.replace(word, '');
     }
 }
 
