@@ -24,6 +24,7 @@ var TeaFactory = /** @class */ (function () {
 }());
 var factory = new TeaFactory();
 var greenTea = factory.create('Green');
+var greenTea1 = factory.create('Green');
 var blackTea = factory.create('Black');
 // console.log(factory.getTypes());
 factory.getTypes();

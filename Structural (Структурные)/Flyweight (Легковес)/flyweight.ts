@@ -26,6 +26,7 @@ class TeaFactory {
 const factory = new TeaFactory();
 
 const greenTea = factory.create('Green');
+const greenTea1 = factory.create('Green');
 const blackTea = factory.create('Black');
 // console.log(factory.getTypes());
 factory.getTypes();
