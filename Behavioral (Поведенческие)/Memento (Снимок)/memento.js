@@ -1,83 +1,41 @@
 var Memento = /** @class */ (function () {
-    function Memento(state) {
-        this.state = state;
-        this.date = new Date().toString().slice(0, 19).replace('T', ' ');
+    function Memento(value) {
+        this.value = value;
     }
-    Memento.prototype.getState = function () {
-        return this.state;
-    };
-    Memento.prototype.getName = function () {
-        return "".concat(this.date, " / (").concat(this.state.substring(0, 18), "...)");
-    };
-    Memento.prototype.getDate = function () {
-        return this.date;
-    };
     return Memento;
 }());
+;
 var Originator = /** @class */ (function () {
-    function Originator(state) {
-        this.state = state;
-        console.log("Originator: My initial state is ".concat(state));
+    function Originator() {
     }
-    Originator.prototype.action = function () {
-        console.log('Originator: executing an action');
-        this.state = this.getRandomString(30);
-        console.log("Originator: My state has changet to ".concat(this.state));
+    Originator.save = function (value) {
+        return new Memento(value);
     };
-    Originator.prototype.getRandomString = function (length) {
-        if (length === void 0) { length = 10; }
-        var CharSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        return Array
-            .apply(null, { length: length })
-            .map(function () { return CharSet.charAt(Math.floor(Math.random() * CharSet.length)); })
-            .join('');
-    };
-    Originator.prototype.save = function () {
-        return new Memento(this.state);
-    };
-    Originator.prototype.restore = function (memento) {
-        this.state = memento.getState();
-        console.log("Originator: My state has changet to: ".concat(this.state));
+    Originator.restore = function (memento) {
+        return memento.value;
     };
     return Originator;
 }());
+;
 var Caretaker = /** @class */ (function () {
-    function Caretaker(originator) {
-        this.mementos = [];
-        this.originator = originator;
+    function Caretaker() {
+        this.values = [];
     }
-    Caretaker.prototype.backup = function () {
-        console.log('\nCaretaker: Saving Originator\'s state...');
-        this.mementos.push(this.originator.save());
+    Caretaker.prototype.addMemento = function (memento) {
+        this.values.push(memento);
     };
-    Caretaker.prototype.undo = function () {
-        if (!this.mementos.length) {
-            return;
-        }
-        var memento = this.mementos.pop();
-        console.log("Caretaker: Restoring state to: ".concat(memento === null || memento === void 0 ? void 0 : memento.getName()));
-        if (memento)
-            this.originator.restore(memento);
-    };
-    Caretaker.prototype.showHistory = function () {
-        console.log('Caretaker: Here\s the list of mementos:');
-        for (var _i = 0, _a = this.mementos; _i < _a.length; _i++) {
-            var memento = _a[_i];
-            console.log(memento.getName());
-        }
+    Caretaker.prototype.getMemento = function (index) {
+        return this.values[index];
     };
     return Caretaker;
 }());
-var originator = new Originator('Some standart text');
-var caretaker = new Caretaker(originator);
-caretaker.backup();
-originator.action();
-caretaker.backup();
-originator.action();
-caretaker.backup();
-originator.action();
+var caretaker = new Caretaker();
+caretaker.addMemento(Originator.save('Some text'));
+caretaker.addMemento(Originator.save('Other text!'));
+caretaker.addMemento(Originator.save('Some other text!!!'));
+caretaker.addMemento(Originator.save('Some more text!!!'));
+console.log(caretaker.values);
 console.log('');
-caretaker.showHistory();
-caretaker.undo();
-caretaker.undo();
-caretaker.undo();
+console.log(Originator.restore(caretaker.getMemento(0)));
+console.log('');
+console.log(Originator.restore(caretaker.getMemento(2)));
