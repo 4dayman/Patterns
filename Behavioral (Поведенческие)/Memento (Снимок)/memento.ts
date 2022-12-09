@@ -1,35 +1,4 @@
-interface IMemento {
-    getState(): string;
-    getName(): string;
-    getDate(): string;
-}
-class Originator {
-    state: string;
-    constructor(state: string) {
-        this.state = state;
-        console.log(`Originator: My initial state is ${state}`);
-    }
-    action(): void {
-        console.log('Originator: executing an action');
-        this.state = this.getRandomString(30);
-        console.log(`Originator: My state has changet to ${this.state}`)
-    }
-    getRandomString(length: number = 10): string {
-        const CharSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        return Array 
-        .apply(null, { length } as any)
-        .map(() => CharSet.charAt(Math.floor(Math.random() * CharSet.length)))
-        .join('');
-    }
-    save(): IMemento {
-        return new SomeMemento(this.state)
-    }
-    restore(memento: IMemento): void {
-        this.state = memento.getState();
-        console.log(`Originator: My state has changet to: ${this.state}`);
-    }
-}
-class SomeMemento implements IMemento {
+class Memento {
     state: string;
     date: string;
     constructor(state: string) {
@@ -46,8 +15,34 @@ class SomeMemento implements IMemento {
         return this.date;
     }
 }
+class Originator {
+    state: string;
+    constructor(state: string) {
+        this.state = state;
+        console.log(`Originator: My initial state is ${state}`);
+    }
+    action(): void {
+        console.log('Originator: executing an action');
+        this.state = this.getRandom(30);
+        console.log(`Originator: My state has changet to ${this.state}`)
+    }
+    getRandom(length: number = 10): string {
+        const CharSet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        return Array 
+        .apply(null, { length } as any)
+        .map(() => CharSet.charAt(Math.floor(Math.random() * CharSet.length)))
+        .join('');
+    }
+    save(): Memento {
+        return new Memento(this.state)
+    }
+    restore(memento: Memento): void {
+        this.state = memento.getState();
+        console.log(`Originator: My state has changet to: ${this.state}`);
+    }
+}
 class Caretaker {
-    mementos: IMemento[] = [];
+    mementos: Memento[] = [];
     originator: Originator;
     constructor(originator: Originator) {
         this.originator = originator;

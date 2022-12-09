@@ -1,3 +1,19 @@
+var Memento = /** @class */ (function () {
+    function Memento(state) {
+        this.state = state;
+        this.date = new Date().toString().slice(0, 19).replace('T', ' ');
+    }
+    Memento.prototype.getState = function () {
+        return this.state;
+    };
+    Memento.prototype.getName = function () {
+        return "".concat(this.date, " / (").concat(this.state.substring(0, 18), "...)");
+    };
+    Memento.prototype.getDate = function () {
+        return this.date;
+    };
+    return Memento;
+}());
 var Originator = /** @class */ (function () {
     function Originator(state) {
         this.state = state;
@@ -17,29 +33,13 @@ var Originator = /** @class */ (function () {
             .join('');
     };
     Originator.prototype.save = function () {
-        return new SomeMemento(this.state);
+        return new Memento(this.state);
     };
     Originator.prototype.restore = function (memento) {
         this.state = memento.getState();
         console.log("Originator: My state has changet to: ".concat(this.state));
     };
     return Originator;
-}());
-var SomeMemento = /** @class */ (function () {
-    function SomeMemento(state) {
-        this.state = state;
-        this.date = new Date().toString().slice(0, 19).replace('T', ' ');
-    }
-    SomeMemento.prototype.getState = function () {
-        return this.state;
-    };
-    SomeMemento.prototype.getName = function () {
-        return "".concat(this.date, " / (").concat(this.state.substring(0, 18), "...)");
-    };
-    SomeMemento.prototype.getDate = function () {
-        return this.date;
-    };
-    return SomeMemento;
 }());
 var Caretaker = /** @class */ (function () {
     function Caretaker(originator) {
