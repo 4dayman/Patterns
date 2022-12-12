@@ -24,6 +24,7 @@ class NumberToDate implements IConverter {
         console.log(new Date(num * 1000).toUTCString());
     }
 }
+
 const usd = new Conversion(new NumberToCureency);
 usd.execute(1000);
 
